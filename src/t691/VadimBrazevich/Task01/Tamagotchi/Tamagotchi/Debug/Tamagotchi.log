@@ -1,0 +1,3 @@
+﻿  Source.cpp
+d:\se-repo\src\t691\vadimbrazevich\task01\tamagotchi\tamagotchi\source.cpp(30): warning C4244: инициализация: преобразование "time_t" в "int", возможна потеря данных
+  Tamagotchi.vcxproj -> D:\se-repo\src\t691\VadimBrazevich\Task01\Tamagotchi\Debug\Tamagotchi.exe
