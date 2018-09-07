@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+	<link rel="shortcut icon" href="img/cat_icon.png">
+</head>
+<body>
+
+	<div class="pet">
+		<img src="img/cat_icon.png">
+
+		<div id="condition">
+			<div id="info">
+				<span>Здоровье&#128150; </span>
+				<span>Радость&#128516;</span>
+			</div>
+
+			<div id="wrap-condition-value">
+				<progress class="condition-value" id="life" value="0" max="100"></progress>
+				<br>
+				<progress class="condition-value" id="mood" value="0" max="100"></progress>
+			</div>
+		</div>
+		<div id="actions">
+			<div class="action-button" id="feed">Покормить</div>
+			<div class="action-button" id="play">Поиграть</div>
+			<div class="action-button" id="talk">Поговорить</div>
+		</div>
+	</div>
+
+	<script src="class/pet.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
