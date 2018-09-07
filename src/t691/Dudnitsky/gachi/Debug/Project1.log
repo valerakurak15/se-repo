@@ -1,0 +1,7 @@
+﻿D:\vijla ebanaya\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: промежуточный каталог (Debug\) содержит файлы, которые используются совместно с другим проектом (Project1.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+  Source.cpp
+c:\users\fasss\source\repos\project1\project1\source.cpp(99): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+c:\users\fasss\source\repos\project1\project1\source.cpp(113): warning C4129: _: неизвестная escape-последовательность
+c:\users\fasss\source\repos\project1\project1\source.cpp(127): warning C4129: _: неизвестная escape-последовательность
+c:\users\fasss\source\repos\project1\project1\source.cpp(101): warning C4101: choice: неиспользованная локальная переменная
+  Project1.vcxproj -> c:\Users\fasss\source\repos\Project1\Debug\gachimochi.exe
