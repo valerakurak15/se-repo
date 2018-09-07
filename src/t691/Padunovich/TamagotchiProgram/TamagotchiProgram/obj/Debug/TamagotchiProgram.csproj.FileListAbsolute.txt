@@ -1,0 +1,6 @@
+c:\users\kalin0vsky\documents\visual studio 2013\Projects\TamagotchiProgram\TamagotchiProgram\bin\Debug\TamagotchiProgram.exe.config
+c:\users\kalin0vsky\documents\visual studio 2013\Projects\TamagotchiProgram\TamagotchiProgram\obj\Debug\TamagotchiProgram.csprojResolveAssemblyReference.cache
+c:\users\kalin0vsky\documents\visual studio 2013\Projects\TamagotchiProgram\TamagotchiProgram\bin\Debug\TamagotchiProgram.exe
+c:\users\kalin0vsky\documents\visual studio 2013\Projects\TamagotchiProgram\TamagotchiProgram\bin\Debug\TamagotchiProgram.pdb
+c:\users\kalin0vsky\documents\visual studio 2013\Projects\TamagotchiProgram\TamagotchiProgram\obj\Debug\TamagotchiProgram.exe
+c:\users\kalin0vsky\documents\visual studio 2013\Projects\TamagotchiProgram\TamagotchiProgram\obj\Debug\TamagotchiProgram.pdb
