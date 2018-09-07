@@ -1,0 +1,7 @@
+F:\visual\tamagotchi\tamagotchi\bin\Debug\tamagotchi.exe.config
+F:\visual\tamagotchi\tamagotchi\bin\Debug\tamagotchi.exe
+F:\visual\tamagotchi\tamagotchi\bin\Debug\tamagotchi.pdb
+F:\visual\tamagotchi\tamagotchi\obj\Debug\tamagotchi.csprojAssemblyReference.cache
+F:\visual\tamagotchi\tamagotchi\obj\Debug\tamagotchi.csproj.CoreCompileInputs.cache
+F:\visual\tamagotchi\tamagotchi\obj\Debug\tamagotchi.exe
+F:\visual\tamagotchi\tamagotchi\obj\Debug\tamagotchi.pdb
