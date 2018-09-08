@@ -46,6 +46,19 @@ public class Main {
             }
         }
 
+        public void eat(){
+            if(eat >= 100){
+                System.out.println("Кормить больше некуда!)");
+                System.out.println();
+            }
+            else{
+                eat += 10;
+                System.out.println("Ему было очень вкусно!)");
+                System.out.println();
+                write(type, name, health, eat);
+            }
+        }
+
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -57,7 +70,7 @@ public class Main {
                     System.out.println(name + " хочет кушать!");
                     health -= 1;
                     write(type, name, health, eat);
-                    if(health == 0){
+                    if(health <= 0){
                         System.out.println("Питомец мертв!(");
                         write(type, name, health, eat);
                         System.exit(0);
@@ -96,6 +109,7 @@ public class Main {
 
                 int temp = 0;
 
+                System.out.println("Здоровье: " + health + "  " + "Сытость: " + eat);
                 System.out.println("Выберите что требуется сделать с Вашим питомцом: ");
                 System.out.println("1. Кормить 2.Выход");
 
@@ -112,15 +126,53 @@ public class Main {
                 }
             }
         }
+    }
 
-        public void eat(){
-            if(eat >= 100){
-                System.out.println("Кормить больше некуда!)");
-            }
-            else{
-                eat += 10;
-                System.out.println("Ему было очень вкусно!)");
-                write(type, name, health, eat);
+    static class Dog extends Pet{
+
+        Dog(String name){
+            type = "Собака";
+            this.name = name;
+            health = 9;
+            eat = 90;
+            in = new Scanner(System.in);
+            read();
+            write(type, this.name, health, eat);
+            timer = new Timer();
+            timer.scheduleAtFixedRate(task, 1000, 2000);
+        }
+
+        Dog(String type, String name, int health, int eat){
+            this.type = "Собака";
+            this.name = name;
+            this.health = health;
+            this.eat = eat;
+            in = new Scanner(System.in);
+            timer = new Timer();
+            timer.scheduleAtFixedRate(task, 1000, 2000);
+        }
+
+        public void life(){
+            while(health != 0){
+
+                int choose = 0;
+
+                System.out.println("Здоровье: " + health + "  " + "Сытость: " + eat);
+                System.out.println("Выберите что требуется сделать с Вашим питомцом: ");
+                System.out.println("1. Кормить 2.Выход");
+                choose = in.nextInt();
+
+                switch (choose){
+                    case 1:
+                        eat();
+                        break;
+                    case 2:
+                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println("Выбирите из предложенного!");
+                }
+
             }
         }
     }
@@ -130,16 +182,23 @@ public class Main {
         Scanner in = new Scanner(System.in);
 
         System.out.println("Выберите тип питомца: ");
-        System.out.println("1. Кот");
+        System.out.println("1. Кот \n2. Собака");
         choose = in.nextInt();
 
         switch (choose){
             case 1:
                 System.out.println("Вы выбрали кота!");
-                System.out.print("Дайте имя Вашему питомцу: ");
+                System.out.print("Дайте кличку Вашему питомцу: ");
                 name = in.next();
                 Cat c = new Cat(name);
                 c.life();
+                break;
+            case 2:
+                System.out.println("Вы выбрали собаку!");
+                System.out.print("Дайте кличку Вашему питомцу: ");
+                name = in.next();
+                Dog d = new Dog(name);
+                d.life();
                 break;
             default:
                 System.out.println("Ошибка!");
@@ -160,23 +219,37 @@ public class Main {
             health = in.nextInt();
             eat = in.nextInt();
 
-            if(health == 0){
+
+            if(health <= 0){
                 System.out.println("Нет живых питомцев! Начните заново!");
             }
             else {
-                Cat c = new Cat(type, name, health, eat);
-                c.life();
+                switch (type){
+                    case "Кот":
+                        Cat c = new Cat(type, name, health, eat);
+                        System.out.println("Ваш " + name + " очень Вас заждался!");
+                        System.out.println();
+                        c.life();
+                        break;
+                    case "Собака":
+                        Dog d = new Dog(type, name, health, eat);
+                        System.out.println("Ваш " + name + " очень Вас заждался!");
+                        System.out.println();
+                        d.life();
+
+                }
+                System.out.println(type);
             }
         }
         catch(IOException ex){
             System.out.println(ex.getMessage());
             System.out.println("Начните новою игру.\n");
+            start();
         }
 
     }
 
-    public static void main(String[] args) {
-
+    static void start(){
         int choose = 0;
         boolean repeat = true;
         Scanner in = new Scanner(System.in);
@@ -202,6 +275,9 @@ public class Main {
                     break;
             }
         }
+    }
 
+    public static void main(String[] args) {
+        start();
     }
 }
