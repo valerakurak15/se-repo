@@ -1,0 +1,153 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Pet {
+private:
+	int food;
+	int mood;
+	int energy;
+	int toilet;
+	int health;
+	bool death;
+public:
+	string name;
+	Pet() {
+		death = 0;
+		food = 5;
+		mood = 5;
+		toilet = 5;
+		health = 5;
+		energy = 10;
+		name = "NoName";
+	};
+
+	void getKey() {
+		int key;
+		cin >> key;
+		while(key > 5 || key < 1) {
+			cout << "You can only whrite numbers from 1 to 5. Try again plz.\n";
+			cin >> key;
+		}
+
+		switch(key) {
+			case 1: feedThePet();          break;
+			case 2: moodOfThePet();        break;
+			case 3: toiletNeedsOfThePet(); break;
+			case 4: healThePet();          break;
+			case 5: sendToBed();           break;
+		};
+	}
+
+	void feedThePet() {
+		system("cls");
+		cout << "You fed your pet. (food: +1, energy: -1, toilet: +1).\n";
+		cout << "........................................................................\n\n";
+		food   += 1;
+		energy -= 1;
+		toilet += 1;
+	}
+
+	void moodOfThePet() {
+		system("cls");
+		cout << "You made your pet happier, congrats. (mood: +2, food: -2, energy: -1).\n";
+		cout << "........................................................................\n\n";
+		mood   += 2;
+		food   -= 2;
+		energy -= 1;
+	}
+
+	void toiletNeedsOfThePet() {
+		system("cls");
+		cout << "You made your pet happier, congrats. (toilet: +3, energy: -1, mood: +1).\n";
+		cout << "........................................................................\n\n";
+		toilet += 3;
+		mood   += 1;
+		energy -= 1;
+	}
+
+	void healThePet() {
+		system("cls");
+		cout << "You've healed " << name << ", good job. (food +2, energy -1)\n";
+		cout << "........................................................................\n\n";
+		health += 2;
+		energy -= 1;
+	}
+
+	void sendToBed() {
+		system("cls");
+		cout << "Z-z-z-z-z... (food -1, energy +2, toilet -1, mood +1)";
+		cout << "........................................................................\n\n";
+		food   -= 1;
+		energy += 2;
+		toilet -= 1;
+		mood   += 1;
+	}
+
+	int action() {
+		cout << "Press [1] to feed the rabbit. (hunger +1, energy -1, toilet +1)" << endl;
+		cout << "Press [2] to make your pet happier. (mood +2, hunger -2, energy -1)" << endl;
+		cout << "Press [3] to take the pet to the toilet. (toilet +3, energy -1)" << endl;
+		cout << "Press [4] to heal your rabbit. (health +2, energy -1)" << endl;
+		cout << "Press [5] to send " << name << " to bed. (hunger -1, energy +2, toilet -2, mood +1)" << endl;
+		cout << "........................................................................\n";
+		if(!death) {
+			cout << "##_______________________### \n####___________________#### \n#####________________##### \n######______________###### \n#######___________####### \n#######_________####### \n_#######______######## \n_#######____######## \n__######___####### \n___#####_###### \n____######## \n_____############# \n_____############### \n___############___### \n___################### \n___#################### \n___################### \n____################# \n______###########\n";
+		}
+		cout << endl;
+		if(food <= 0 || mood <= 0 || toilet <= 0 || health <= 0 || energy <= 0) {
+			death = !death;
+			cout << "You didnt get well and your pet died, don't get a pet plz.\n";
+
+		}
+		cout << "[1] food:   " << food << endl;
+		cout << "[2] mood:   " << mood << endl;
+		cout << "[3] toilet: " << toilet << endl;
+		cout << "[4] health: " << health << endl;
+		cout << "[5] energy:  " << energy << endl;
+
+		if(death) {
+			return 0;
+		}
+		getKey();
+	}
+
+	bool ifHesDead() {
+		if(death) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+};
+
+int main() {
+	cout << "What would be your pets name?\n";
+	Pet dude;
+	cin >> dude.name;
+
+	cout << ".....................................................................\n";
+	cout << "You need to care about your pet named " << dude.name << ".\n" << "You can't let him die at any cost.\n" << "Remember the phrase: we are responsible for those who have tamed.\nSo, try not to kill him\n";
+	cout << ".....................................................................\n";
+	system("pause");
+	system("cls");
+	cout << "That's your pet\n";
+	cout << "##_______________________### \n####___________________#### \n#####________________##### \n######______________###### \n#######___________####### \n#######_________####### \n_#######______######## \n_#######____######## \n__######___####### \n___#####_###### \n____######## \n_____############# \n_____############### \n___############___### \n___################### \n___#################### \n___################### \n____################# \n______###########\n";
+	cout << "You can meet the needs of your rabbit\n";
+	cout << "Press [1] to feed the rabbit. (hunger +1, energy -1, toilet +1)" << endl;
+	cout << "Press [2] to make your pet happier. (mood +2, hunger -2, energy -1)" << endl;
+	cout << "Press [3] to take the pet to the toilet. (toilet +3, energy -1)" << endl;
+	cout << "Press [4] to heal your rabbit. (health +2, energy -1)" << endl;
+	cout << "Press [5] to send " << dude.name << " to bed. (hunger -1, energy +2, toilet -2, mood +1)" << endl;
+	system("pause");
+	system("cls");
+	for( ; !dude.ifHesDead(); ) {
+		dude.action();
+	}
+	system("cls");
+	cout << "You didnt get well and your pet died, don't get a pet plz.\n";
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,57 @@
+body {
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pet {
+	background-color: #D8D3CF;
+	border: 3px solid #000D4D;
+	border-radius: 20px;
+}
+.action-button {
+	position: relative;
+	margin: 15px auto;
+	display: flex;
+	width: 100px;
+	height: 20px;
+	border-radius: 20px;
+	justify-content: center;
+	background-color: #000D4D;
+	color: white;
+	font-family: 'Roboto Condensed', sans-serif;
+	transition: all ease 300ms;
+	cursor: pointer;
+	box-shadow: 0 0 10px black;
+	user-select: none;
+}
+
+.action-button:hover {
+	background-color: #0026E3;
+	box-shadow: 0 0 0;
+}
+
+
+#condition {
+	display: flex;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+.condition-value {
+	transition: all ease 300ms;
+}
+
+span {
+	margin-left: 10px; 
+}
+
+#info {
+	display: block;
+	width: 100px;
+}
+
+ 
+

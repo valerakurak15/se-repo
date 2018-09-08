@@ -1,0 +1,7 @@
+﻿  Source.cpp
+c:\users\fasss\source\repos\project1\project1\source.cpp(98): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+c:\users\fasss\source\repos\project1\project1\source.cpp(100): warning C4101: choice: неиспользованная локальная переменная
+  Создание кода
+  All 116 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  Project1.vcxproj -> c:\Users\fasss\source\repos\Project1\Release\gachimochi.exe
