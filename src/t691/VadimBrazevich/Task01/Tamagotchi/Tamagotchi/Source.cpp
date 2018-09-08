@@ -1,7 +1,6 @@
 #include <iostream>
 #include <ctime>
 #include <string>
-#include <conio.h>
 using namespace std;
 
 
@@ -85,7 +84,7 @@ int main() {
 		if (pet.sleepy < 30) cout << "I want to sleep! \n";
 		if (pet.hunger < 30) cout << "Feed me! \n";
 		cout << "feed: \"q\"\tsleep: \"w\"\nUpdate: \"any key\"\n";
-		char a = _getch();
+		char a = cin.get();
 		switch (a) {
 		case 'q':
 			pet.feed();
