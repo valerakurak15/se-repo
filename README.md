@@ -1,6 +1,8 @@
 se_repo (Software Engineering courses for students of IT dept. of College of Business and Law, Minsk 2018-2019)
 ========
 
+## Tasks : https://docs.google.com/document/d/1mJ1_GH9hQGD0PgZe_tKVcbeBsWWtXbqu7j7Q4S-b_jk/edit?usp=sharing
+
 ## Git configuration.  
 Configure ssh connection based on git documentation [https://help.github.com/articles/connecting-to-github-with-ssh](https://help.github.com/articles/connecting-to-github-with-ssh).
 
