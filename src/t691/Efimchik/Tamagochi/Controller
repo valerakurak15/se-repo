@@ -1,0 +1,25 @@
+package sample;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.ProgressBar;
+
+public class Controller {
+    public ProgressBar moodpoints;
+    public ProgressBar healthpoints;
+
+    public void feed(ActionEvent actionEvent) {
+        XP.lifes = 1.0;
+        healthpoints.setProgress(XP.lifes);
+    }
+
+    public void pet(ActionEvent actionEvent) {
+        XP.mood = 1.0;
+        moodpoints.setProgress(XP.mood);
+    }
+
+    public void downgrade() {
+        moodpoints.setProgress(XP.mood -= 0.1);
+        healthpoints.setProgress(XP.lifes -= 0.1);
+    }
+}
