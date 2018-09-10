@@ -1,0 +1,303 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Type_Tamagochi();
+        }
+
+        public static void Type_Tamagochi()
+        {
+            Console.WriteLine(@"Выберите своего питомца - 
+1 - ГУСЬ - ОБЫЧНЫЙ 
+2 - ГУСЬ - ГИДРА
+3 - УЛЬТРАРЕДКИЙ ГУСЬ - РАЗВЕДЧИК 
+
+
+P.S. СО ВРЕМЕНЕМ ГУСЬ БУДЕТ ПРОСИТЬ ВСЁ БОЛЬШЕ И БОЛЬШЕ... ");
+
+           
+            int goose_type = 1; 
+            bool chooseCycle = true;
+            while (chooseCycle)
+            {
+                goose_type = Convert.ToInt32(Console.ReadLine());
+                DrawingGoose.Drawing_goose(goose_type);
+                switch (goose_type)
+                {
+                    case 1:
+                        {
+                            Console.WriteLine(
+    "Поздравляю @Sergey, теперь это ваш цепной \n ОБЫЧНЫЙ - ГУСЬ \n " + DrawingGoose.Drawing_goose(goose_type));
+                            chooseCycle = false;
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.WriteLine(
+    "Поздравляю @Sergey, теперь это ваш цепной \n ГУСЬ - ГИДРА \n " + DrawingGoose.Drawing_goose(goose_type));
+                            chooseCycle = false;
+                            break;
+                        }
+
+                    case 3:
+                        {
+                            Console.WriteLine(
+    "Поздравляю @Sergey, теперь это ваш цепной \n УЛЬТРАРЕДКИЙ ГУСЬ - РАЗВЕДЧИК \n " + DrawingGoose.Drawing_goose(goose_type));
+                            chooseCycle = false;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Выберите одного из трёх доступных");
+                            break;
+                        }
+                }
+            }
+            Console.WriteLine("Нажмите любую клавишу для продолжения");
+            Console.ReadKey();
+            Console.Clear();
+            Console.Write(DrawingGoose.Drawing_goose(goose_type) + "\nПридумайте ему имя - ");
+            string name_tamagochi = Console.ReadLine();
+            Console.WriteLine("Нажмите любую клавишу для продолжения");
+            Console.ReadKey();
+            Console.Clear();
+            switch (goose_type)
+            {
+
+                case 1:
+                    {
+                        Console.WriteLine(DrawingGoose.Drawing_goose(goose_type) + "\n Я {0}", (name_tamagochi));
+                        break;
+                    }
+
+                case 2:
+                    {
+                        Console.WriteLine(DrawingGoose.Drawing_goose(goose_type) + "\n Я {0}", (name_tamagochi));
+                        break;
+                    }
+
+                case 3:
+                    {
+                        Console.WriteLine(DrawingGoose.Drawing_goose(goose_type) + "\n Я {0}", (name_tamagochi));
+                        break;
+                    }
+            }
+
+
+            Console.WriteLine("Нажмите любую клавишу для продолжения (снова)");
+            Console.ReadKey();
+            Console.Clear();
+            Stats stats1 = new Stats(goose_type);
+            while (true)
+            {
+                stats1.Info();
+                stats1.Help();
+                stats1.Progress();
+                Console.Clear();
+            }
+        }
+    }
+    class Stats
+    {
+
+        public static bool IsOver = false;
+        private int health;
+        private int satiety;
+        private int sleep;
+        public int gooseType;
+
+        public Stats(int gType)
+        {
+            gooseType = gType;
+            health = 500;
+            satiety = 500;
+            sleep = 500;
+        }
+
+        public int Progress()
+        {
+            Thread thread = new Thread(Info);
+            thread.Start();
+
+            int doing = Convert.ToInt32(Console.ReadLine());
+            if (doing == 1) // пожрать
+            {
+
+                health += 50;
+                satiety += 20;
+                sleep -= 20;
+                if (health > 500)
+                {
+                    health = 500;
+                }
+                if (satiety > 500)
+                {
+                    satiety = 500;
+                }
+            }
+            if (doing == 2) // поспать
+            {
+
+                sleep += 50;
+                satiety -= 20;
+                if (sleep > 500)
+                {
+                    sleep = 500;
+                }
+            }
+            if (doing == 3) // тренеровочка
+            {
+
+                health += 50;
+                sleep -= 25;
+                satiety -= 25;
+                if (health > 500)
+                {
+                    health = 500;
+                }
+            }
+
+            if (doing == 9)
+            {
+                Console.WriteLine("Ну ты это, заходи, если что");
+                Environment.Exit(0);
+            }
+            Console.Clear();
+            return doing;
+        }
+
+        public void Info()
+        {
+            while (true)
+            {
+                Console.WriteLine("{3}\n Состояние гуся \n Здоровье {0}\n Сытость {1}\n Усталость {2}  ", health, satiety, sleep, DrawingGoose.Drawing_goose(gooseType));
+                Help();
+                Console.WriteLine("\n");
+                System.Threading.Thread.Sleep(2000);
+                health -= 1;
+                satiety -= 1;
+                sleep -= 1;
+                if (sleep == 0 || health == 0 || satiety == 0 || sleep < 0 || health < 0 || satiety < 0)
+                {
+                    Console.Clear();
+                    Console.WriteLine(DrawingGoose.Drawing_death());
+                    break;
+                }
+                Console.Clear();
+                Thread thread = new Thread(Info);
+                thread.Abort();
+                Progress();
+            }
+        }
+        public void Help()
+        {
+            Console.WriteLine("\n 1 - покормить \n 2 - спать \n 3 - тренероваться \n 9 - Выход \n\n Ухвживать за гусём \n(номер нужного действия + Enter)");
+        }
+    }
+
+    class DrawingGoose
+    {
+        public static string Drawing_goose(int type_goose)
+        {
+            string goose;
+            switch (type_goose)
+            {
+                case 1:
+                    {
+                        goose =
+@"░░░░░▄▀▀▀▄░░░░░░░
+ ▄███▀░0░░░▌░░░░░░░
+ ░░░░▌░░░░░▐░░░░░░░
+ ░░░░▐░░░░░▐░░░░░░░
+ ░░░░▌░░░░░▐▄▄░░░░░
+ ░░░░▌░░░░▄▀▒▒▀▀▀▀▄
+ ░░░▐░░░░▐▒▒▒▒▒▒▒▒▀▀▄
+ ░░░▐░░░░▐▄▒▒▒▒▒▒▒▒▒▒▀▄
+ ░░░░▀▄░░░░▀▄▒▒▒▒▒▒▒▒▒▒▀▄
+ ░░░░░░▀▄▄▄▄▄█▄▄▄▄▄▄▄▄▄▄▄▀▄
+ ░░░░░░░░░░░▌▌░▌▌░░░░░
+ ░░░░░░░░░░░▌▌░▌▌░░░░░
+ ░░░░░░░░░▄▄▌▌▄▌▌░░░░░";
+                        return goose;
+
+                    }
+                case 2:
+                    {
+                        goose =
+ @"░░░░░░▄▀▀▀▄░░░░░░░░
+ ▄███▀░0░▄▀▀▀▄░░░░░░
+ ░░▄███▀░0░░░░▌░░░
+ ░░░▐░▄▀▀▀▄░░░▌░░░░
+ ▄███▀░0░░░▌░░▌░░░░
+ ░░░░▌░░░░░▐▄▄▌░░░░░
+ ░░░░▌░░░░▄▀▒▒▀▀▀▀▄
+ ░░░▐░░░░▐▒▒▒▒▒▒▒▒▀▀▄
+ ░░░▐░░░░▐▄▒▒▒▒▒▒▒▒▒▒▀▄
+ ░░░░▀▄░░░░▀▄▒▒▒▒▒▒▒▒▒▒▀▄
+ ░░░░░░▀▄▄▄▄▄█▄▄▄▄▄▄▄▄▄▄▄▀▄
+ ░░░░░░░░░░░▌▌░▌▌░░░░░
+ ░░░░░░░░░░░▌▌░▌▌░░░░░
+ ░░░░░░░░░▄▄▌▌▄▌▌░░░░░";
+                        return goose;
+
+                    }
+                case 3:
+                    {
+                        goose =
+@"░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ ░░░░░░░▄▀▀▀▄░░░░░▄▀▀▀▄░░░░░░░░░░░
+ ░░▄███▀░0░░░▌░░░▐░░░0░▀███▄░░░░░░
+ ░░░░░░▌░░░░░▐░░░▌░░░░░▐░░░░░░░░░░
+ ░░░░░░▐░░░░░▐░░░▌░░░░░▌░░░░░░░░░░";
+                        return goose;
+
+                    }
+            }
+            return "";
+        }
+
+        public static string Drawing_death()
+        {
+            string death_goose =
+@"
+
+█──█
+█─█
+██
+█─█
+█──█
+
+
+███─█─█─████─█──██
+█───█─█─█──█─█─█──█
+█───███─█────████─█
+█─────█─█──█─█─█──█
+█───███─████─█──██
+
+
+████─████─█──█─█───█───██─████
+█──█─█──█─█──█─█───█──█─█─█──█
+█──█─████─█─██─█─█─█─█──█─████
+█──█─█────██─█─█─█─█─█──█─█──█
+█──█─█────█──█─█████─█──█─█──█
+
+
+████─█───█─███─████─███─█
+█──█─██─██─█───█──█──█──█
+█────█─█─█─███─████──█──████
+█──█─█───█─█───█─────█──█──█
+████─█───█─███─█─────█──████
+";
+            return death_goose;
+        }
+    }
+}
