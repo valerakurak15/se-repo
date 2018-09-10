@@ -27,22 +27,22 @@ namespace Game
             }
             return responseHWIDstring;
         }
-        public static string sendHealth(int kind_health)
+        public static string sendHealth(int petHealth)
         {
             using (var wb = new WebClient())
             {
                 var data = new NameValueCollection();
                 data["HWID"] = ConfSys.getHWID();
-                data["health"] = Convert.ToString(kind_health);
+                data["health"] = Convert.ToString(petHealth);
 
                 var response = wb.UploadValues("http://desulist.000webhostapp.com/tamagochi.php", "POST", data);
                 responseHealthString = Encoding.UTF8.GetString(response);
             }
             return responseHealthString;
         }
-
     }
-   abstract class pet
+    
+   abstract class AbstractPet
     {
         public int getTimeBetween(DateTime pastTime)
         {
@@ -66,7 +66,8 @@ namespace Game
         protected int cat_health = 2, dog_health = 3, parrot_health = 1; 
         public abstract int checkState(DateTime pastTime, string func);
     }
-    class cat : pet
+    
+    class cat : AbstractPet
     {
         public override int checkState(DateTime pastTime, string func)
         {
@@ -80,7 +81,8 @@ namespace Game
                 return cat_health;
         }
     }
-    class dog : pet
+    
+    class dog : AbstractPet
     {
         public override int checkState(DateTime pastTime, string func)
         {
@@ -94,7 +96,8 @@ namespace Game
             return dog_health;
         }
     }
-    class parrot : pet
+    
+    class parrot : AbstractPet
     {
         public override int checkState(DateTime pastTime, string func)
         {
@@ -109,4 +112,3 @@ namespace Game
         }
     }
 }
-
