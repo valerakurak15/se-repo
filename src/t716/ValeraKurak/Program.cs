@@ -28,7 +28,10 @@ class Program
 
        
 
-        Console.WriteLine("Загрузка ЦП: " + cpu.NextValue() + " %");
+       Console.WriteLine(cpu.NextValue());
+        
+        System.Threading.Thread.Sleep(1000);
+        Console.WriteLine("Загрузка ЦП: " + cpu.NextValue() + "%");
         Console.WriteLine("Используется ОЗУ: " + ram.NextValue() + " %");
         Console.WriteLine("Доступно ОЗУ: " + ram2.NextValue() + " МБ");
         Console.WriteLine("Процент времени бездействия физического диска: " + disk.NextValue() + " %");
